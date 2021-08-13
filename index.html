@@ -10,18 +10,33 @@
 <body>
     <div class="scores"><a href="./highscores.html">View Highscores</a></div>
 
-    <div class="time">Time: 0</div>
+    <div class="timer">Time: <span id="time">0</span></div>
     
     <main class="wrapper">
         <section id="start-page" class="start">
             <h1 class="title">Coding Quiz Challenge</h1>
             <p class="instructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="btn">Start Quiz</button>
+            <button id="start-btn" class="btn">Start Quiz</button>
         </section>
 
         <section id="questions" class="hide">
-            <h2 id="question-title">What, is your quest?</h2>
-            <div id="choices" class="choices"></div>
+            <h2 id="Q">What, is your quest?</h2>
+            <div id="choices" class="choices">
+                <ol>
+                    <li>
+                        <button class="btn">Go</button>
+                    </li>
+                    <li>
+                        <button class="btn">Fight</button>
+                    </li>
+                    <li>
+                        <button class="btn">Win</button>
+                    </li>
+                    <li>
+                        <button class="btn">Yeah</button>
+                    </li>
+                </ol>
+            </div>
         </section>
 
         <section id="end-page" class="hide">
@@ -36,5 +51,6 @@
         <section id="feedback" class="feedback hide"></section>
     </main>
     
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
