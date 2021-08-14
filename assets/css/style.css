@@ -30,7 +30,7 @@ a:hover {
     right: 10px;
 }
 
-.btn {
+button {
     padding: 2px 10px;
     margin: 5px;
     background-color: var(--color1);
@@ -42,12 +42,21 @@ a:hover {
     transition: background-color 0.1s;
 }
 
-.btn:hover {
+button:hover {
     background-color: var(--color2);
 }
 
 .hide {
     display: none;
+}
+
+.feedback {
+    font-style: italic;
+    font-size: 120%;
+    margin-top: 20px;
+    padding-top: 10px;
+    color: gray;
+    border-top: 2px solid #ccc;
 }
 
 .wrapper {

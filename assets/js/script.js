@@ -5,9 +5,13 @@ var questionsPageEl = document.querySelector('#questions');
 var timeEl = document.querySelector('#time');
 var questionEl = document.querySelector('#Q');
 var choicesEl = document.querySelector('#choices');
+var feedbackEl = document.querySelector('#feedback');
+var endPageEl = document.querySelector('#end-page');
+var scoreEl = document.querySelector('#final-score');
 
 // variable for timer and questions array
 var time = 60;
+var timerInterval;
 var currentQuestionIndex = 0;
 
 // create questions array with choices and answers
@@ -55,26 +59,82 @@ var startQuiz = function() {
 }
 
 var getQuestion = function() {
-    // loop through questions array
-    for (var i = 0; i < questionsArr.length; i++) {
-        // set question to questionEl
-        questionEl.textContent = questionsArr[i].q
+    // get current question from array
+    var currentQuestion = questionsArr[currentQuestionIndex];
 
-        // loop over choices
-        questionsArr[i].choices.forEach(function(choice, i)
-        {
-            // create new button for each choice
-            var choiceButton = document.createElement("button");
-            choiceButton.setAttribute("class", "btn");
-            choiceButton.setAttribute("value", choice);
+    // display currentquestion to questionEl
+    questionEl.textContent = currentQuestion.q;
 
-            choiceButton.textContent = i + "hello there";
+    // clear previous choices
+    choicesEl.innerHTML = "";
 
-            // display choice on page 
-            choicesEl.appendChild(choiceButton);
-        });
+    // loop over choices
+    currentQuestion.choices.forEach(function(choice, i)
+    {
+        // create new button for each choice
+        var choiceButton = document.createElement("button");
+        choiceButton.setAttribute("class", "choice");
+        choiceButton.setAttribute("value", choice);
+
+        choiceButton.textContent = i+". "+choice;
+
+        // add click even listener on each choice
+        choiceButton.onclick = questionClick;
+
+        // display choice on page 
+        choicesEl.appendChild(choiceButton);
+    });
+}
+
+var questionClick = function() {
+    // check if answer is right
+    if (this.value === questionsArr[currentQuestionIndex].answer) {
+        // give  feedback
+        feedbackEl.textContent = "Correct!";
+    } else {
+        // penalize time
+        time -= 15;
+        
+        if (time < 0) {
+            time = 0;
+        }
+
+        // display new time
+        timeEl.textContent = time;
+
+        // give feedback
+        feedbackEl.textContent = "Wrong!";
     }
-    
+
+    // display feedback for a second
+    feedbackEl.setAttribute("class", "feedback");
+    setTimeout( function() {
+        feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+
+    // move to next question in currentQuestionIndex variable
+    currentQuestionIndex++;
+
+    // if out of questions, end quiz
+    if (currentQuestionIndex === questionsArr.length) {
+        endQuiz();
+    } else {
+        getQuestion();
+    }
+} 
+
+var endQuiz = function() {
+    // hide questions page
+    questionsPageEl.style.display = "none";
+
+    // show end page
+    endPageEl.style.display = "block";
+
+    // stop timer
+    clearInterval(timerInterval);
+
+    // show score
+    scoreEl.textContent = time;
 }
 
 var timeCountdown = function() {
