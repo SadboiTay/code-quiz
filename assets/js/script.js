@@ -8,6 +8,8 @@ var choicesEl = document.querySelector('#choices');
 var feedbackEl = document.querySelector('#feedback');
 var endPageEl = document.querySelector('#end-page');
 var scoreEl = document.querySelector('#final-score');
+var submitBtnEl = document.querySelector('#submit');
+var initialsEl = document.querySelector('#initials');
 
 // variable for timer and questions array
 var time = 60;
@@ -52,7 +54,7 @@ var startQuiz = function() {
     questionsPageEl.style.display = "block";
 
     // start timer with setInterval
-    var timerInterval = setInterval(timeCountdown, 1000);
+    timerInterval = setInterval(timeCountdown, 1000);
 
     // get questions
     getQuestion();
@@ -149,16 +151,32 @@ var timeCountdown = function() {
     }
 }
 
-// on click 'start quiz', show hidden questions div and start timer
+var saveHighscore = function() {
+    // get value of user input
+    var initials = initialsEl.value;
+
+    // get saved scores from localstorge, and set to empty array if none found
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    // create new score object
+    var newScore = {
+        score: time,
+        initials: initials 
+    };
+
+    // save to local storage
+    highscores.push(newScore);
+    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    // go to highscores page
+    window.location.href = "highscores.html";
+}
+
+// on click 'start quiz', run startQuiz
 startBtnEl.addEventListener("click", startQuiz);
 
-
-
-// right answer give 'correct' response - go to next question
-
-// wrong answer deducts 10 seconds, give 'wrong' response - go to next question
-
-// when all questions answered OR time runs out, go to end-page with score
+// on click 'submit', run saveHighscore;
+submitBtnEl.addEventListener("click", saveHighscore);
 
 // accept intials input to save score
 
