@@ -12,36 +12,36 @@ var submitBtnEl = document.querySelector('#submit');
 var initialsEl = document.querySelector('#initials');
 
 // variable for timer and questions array
-var time = 60;
+var time = 75;
 var timerInterval;
 var currentQuestionIndex = 0;
 
 // create questions array with choices and answers
 var questionsArr = [
     {
-        q: "Who?",
-        choices: ["yes", "no", "maybe", "for sure"],
-        answer: "for sure"
+        q: "What can loops offer JavaScript code as a whole?",
+        choices: ["Added plug-ins.", "Cleaner syntax.", "Improved performance.", "Cross-platform support."],
+        answer: "Improved performance."
     },
     {
-        q: "What?",
-        choices: ["yes", "no", "maybe", "for sure"],
-        answer: "for sure"
+        q: "What is the default behavior called that is used to move declarations to the top of the current scope?",
+        choices: ["Jumping", "Arranging", "Sorting", "Hoisting"],
+        answer: "Hoisting"
     },
     {
-        q: "When?",
-        choices: ["yes", "no", "maybe", "for sure"],
-        answer: "for sure"
+        q: "What are the identifiers called that cannot be used as variables or function names?",
+        choices: ["Favorites", "Constants", "Reserved Words", "Concrete Terms"],
+        answer: "Reserved Words"
     },
     {
-        q: "Where?",
-        choices: ["yes", "no", "maybe", "for sure"],
-        answer: "for sure"
+        q: "What is a JavaScript element that represents either TRUE or FALSE values?",
+        choices: ["Condition", "Boolean", "Event", "RegExp"],
+        answer: "Boolean"
     },
     {
-        q: "Why?",
-        choices: ["yes", "no", "maybe", "for sure"],
-        answer: "for sure"
+        q: "What is the name of the statement that is used to exit or end a loop?",
+        choices: ["Break statement", "Close statement", "Conditional statement", "Falter statement"],
+        answer: "Break statement"
     }
 ]
 
@@ -78,7 +78,7 @@ var getQuestion = function() {
         choiceButton.setAttribute("class", "choice");
         choiceButton.setAttribute("value", choice);
 
-        choiceButton.textContent = i+". "+choice;
+        choiceButton.textContent = i+1+". "+choice;
 
         // add click even listener on each choice
         choiceButton.onclick = questionClick;

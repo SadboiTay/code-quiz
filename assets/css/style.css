@@ -42,6 +42,10 @@ button {
     transition: background-color 0.1s;
 }
 
+.choices button {
+    display: block;
+}
+
 button:hover {
     background-color: var(--color2);
 }
