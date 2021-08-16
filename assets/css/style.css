@@ -67,3 +67,12 @@ button:hover {
 .start {
     text-align: center;
 }
+
+li:nth-child(odd) {
+    background-color: var(--color2);
+}
+
+li {
+    padding: 5px;
+    list-style: decimal inside none;
+}
