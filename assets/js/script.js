@@ -182,7 +182,3 @@ startBtnEl.addEventListener("click", startQuiz);
 
 // on click 'submit', run saveHighscore;
 submitBtnEl.addEventListener("click", saveHighscore);
-
-// accept intials input to save score
-
-// on save, display high scores page which has 'start over' and 'delete' buttons
