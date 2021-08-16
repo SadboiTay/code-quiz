@@ -31,7 +31,7 @@ a:hover {
 }
 
 button {
-    padding: 2px 10px;
+    padding: 5px 15px;
     margin: 5px;
     background-color: var(--color1);
     color: white;
@@ -59,8 +59,8 @@ button:hover {
     font-size: 120%;
     margin-top: 20px;
     padding-top: 10px;
-    color: gray;
-    border-top: 2px solid #ccc;
+    color: var(--color2);
+    border-top: 2px solid var(--color2);
 }
 
 .wrapper {

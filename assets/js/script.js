@@ -12,7 +12,7 @@ var submitBtnEl = document.querySelector('#submit');
 var initialsEl = document.querySelector('#initials');
 
 // variable for timer and questions array
-var time = 75;
+var time = 100;
 var timerInterval;
 var currentQuestionIndex = 0;
 
@@ -42,6 +42,11 @@ var questionsArr = [
         q: "What is the name of the statement that is used to exit or end a loop?",
         choices: ["Break statement", "Close statement", "Conditional statement", "Falter statement"],
         answer: "Break statement"
+    },
+    {
+        q: "What is the element called that forms a search pattern out of a sequence of characters?",
+        choices: ["Conditional Argument", "Boolean Variable", "Event", "RegExp or Regular Expression"],
+        answer: "RegExp or Regular Expression"
     }
 ]
 
@@ -95,7 +100,7 @@ var questionClick = function() {
         feedbackEl.textContent = "Correct!";
     } else {
         // penalize time
-        time -= 15;
+        time -= 10;
         
         if (time < 0) {
             time = 0;
